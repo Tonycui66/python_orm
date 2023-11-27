@@ -1,0 +1,29 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ... 其他头部信息 ... -->
+  <title>Dashboard</title>
+</head>
+<body>
+<h1>Welcome, {{ session['username'] }}!</h1>
+{% if session['is_superuser'] %}
+<h2>User Management</h2>
+<a href="{{ url_for('add_user_form') }}">Add New User</a>
+<table>
+  <!-- 用户列表和编辑、删除按钮 -->
+  {% for user in users %}
+  <tr>
+    <td>{{ user.username }}</td>
+    <td>
+      <a href="{{ url_for('edit_user', id=user.id) }}">Edit</a>
+      <a href="{{ url_for('delete_user', id=user.id) }}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>You do not have permission to view user management options.</p>
+{% endif %}
+</body>
+</html>

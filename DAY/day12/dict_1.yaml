@@ -1,0 +1,9 @@
+aa:
+- !!python/tuple
+  - 1
+  - 2
+- !!python/tuple
+  - 3
+  - 4
+bb: 2
+cc: 3
